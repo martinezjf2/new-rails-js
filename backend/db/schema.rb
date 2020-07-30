@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2020_07_30_000429) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
     t.string "first_name"
     t.string "last_name"
     t.datetime "created_at", precision: 6, null: false
