@@ -14,16 +14,19 @@ class User {
     fetch(usersBase)
     .then(rsp => rsp.json())
         .then(users => {
-            console.log(users)
+            // console.log(users)
             users.forEach(user => {
                 // console.log(user)
                 const newUser = new User(user.id, user.first_name, user.last_name);
                 // console.log(newUser)
                 list.innerHTML += newUser.render();
+                // console.log(list.innerHTML)
             });
         })
 
     }
+
+    
     
     render() {
         return `
