@@ -1,8 +1,10 @@
 
 document.addEventListener("DOMContentLoaded", () =>{
-    // User.getUsers()
+    User.getUsers()
     Book.getBooks()
 })
+
+
 
 
 

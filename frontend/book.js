@@ -17,13 +17,26 @@ class Book {
             // console.log(books)
             books.forEach(book => {
                 // console.log(book)
-                const newBook
+                const newBook = new Book(book.id, book.title, book.author)
+                // console.log(newBook)
+                list.innerHTML += newBook.renderBook();
+                // show books that are associate with the user when the user is clicked
             })
         })
         // console.log(resp)
 
 
+    }
+
+    renderBook() {
+        if (this.user_id === User.id) {
+        return `
+        <li id="bookLi-${this.id}">
+          ${this.title}, ${this.author}
+        </li>
+        `
         }
+    }
         
     
 
