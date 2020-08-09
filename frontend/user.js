@@ -9,22 +9,32 @@ class User {
         User.users.push(this)
     }
 
-    static getUsers() {
-    const list = document.querySelector('#list')
-    fetch(usersBase)
-    .then(rsp => rsp.json())
-        .then(users => {
-            // console.log(users)
-            users.forEach(user => {
-                // console.log(user)
-                const newUser = new User(user.id, user.first_name, user.last_name);
-                // console.log(newUser)
-                list.innerHTML += newUser.render();
-                // console.log(list.innerHTML)
-            });
+    static async getUsers() {
+        const list = document.querySelector('#list')
+        const response = await fetch(usersBase)
+        const users = await response.json()
+        users.forEach (user => {
+            const newUser = new User(user.id, user.first_name, user.last_name);
+            list.innerHTML += newUser.render();
         })
-
     }
+    
+    // static getUsers() {
+    // const list = document.querySelector('#list')
+    // fetch(usersBase)
+    // .then(rsp => rsp.json())
+    //     .then(users => {
+    //         // console.log(users)
+    //         users.forEach(user => {
+    //             // console.log(user)
+    //             const newUser = new User(user.id, user.first_name, user.last_name);
+    //             // console.log(newUser)
+    //             list.innerHTML += newUser.render();
+    //             // console.log(list.innerHTML)
+    //         });
+    //     })
+
+    // }
     
     render() {
         return `
@@ -34,4 +44,11 @@ class User {
         `
     }
 
+   
+
+    
+
+    
+
 }
+
