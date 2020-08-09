@@ -1,24 +1,20 @@
 
-document.addEventListener("DOMContentLoaded", () =>{
+window.addEventListener("load", () =>{
     User.getUsers()
     // Book.getBooks()
 })
 
+function clickListeners() {
+    const studentList = document.querySelectorAll('li a')
+    studentList.forEach (student => {
+        student.addEventListener("click", displayBooks)
+    console.log('I have been clicked')
+    })
 
-
-// function attachClickLinks() {
-//     let students = document.querySelectorAll('li a')
-//     console.log(students)
-//     students.forEach(student => {
-//       student.addEventListener('click', displayProblem)
-//     })
-//     document.getElementById('problemForm').addEventListener('click', displayCreateForm)
-//     document.getElementById('problems').addEventListener('click', Problem.getProblems)
-//     document.getElementById('sort').addEventListener('click', Problem.sortProblems)
-//   }
-
-
-
+    document.getElementById('list').addEventListener("click", displayBooks)
+    document.getElementById('allStudents').addEventListener("click", displayStudents)
+    document.getElementById('newStudents').addEventListener("click", displayStudentForm)
+}
 
 
 
