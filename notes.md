@@ -8,3 +8,4 @@ things i dont understand as much, and have to study more about
 - what are promises
 - how does the fetch requests work on a professional  level
 - eventListeners
+- what is 'this'
