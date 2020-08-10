@@ -61,8 +61,14 @@ function clearPage() {
 function displayStudents() {
 clearPage()
 User.getUsers()
-}
+clearForm()
 
+}
+ function clearForm() {
+    let studentFormDiv = document.getElementById('studentForm')
+    studentFormDiv.innerHTML = ""
+  }
+ 
 
 
 function displayStudentForm() {
@@ -73,7 +79,7 @@ function displayStudentForm() {
                 <input type="text" id="first_name">
                 <label>Last Name</label>
                 <input type="text" id="last_name">
-                <input type="submit">
+                <input type="submit"><br>
                 </form>
                 `
                 // debugger;
@@ -108,6 +114,7 @@ function createStudent() {
         `
         clickListeners()
         document.querySelector('form').reset()
+        clearForm()
         
     })
 }
