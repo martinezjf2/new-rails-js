@@ -10,6 +10,7 @@ const usersBaseTwo = 'http://localhost:3000/users/'
 document.addEventListener("DOMContentLoaded",() => {
     User.getUsers()
     clickListeners()
+    // deleteUser()
     // displayStudentForm()
 })
 
@@ -26,27 +27,32 @@ function clickListeners() {
     console.log('I have been clicked')
     })
 
-    document.getElementById('list').addEventListener("click", displayBooks);
+    // document.getElementById('list').addEventListener("click", displayBooks);
     document.getElementById('allStudents').addEventListener("click", displayStudents);
     document.getElementById('newStudents').addEventListener("click", displayStudentForm);
 }
 
 function displayBooks() {
     let id = event.target.dataset.id;
+    let listBooksDiv = document.getElementById('bookList'); 
     // console.log("ive been clicked")
     clearPage()
-    let listBooksDiv = document.getElementById('bookList');
-    fetch(booksBaseTwo + id)
+    fetch(`${usersBase}/${id}/books`)
+    
     // console.log(booksBaseTwo + id)
     .then(resp => resp.json())
     // console.log(id)
-    .then(book => {
+    .then(books =>{
+        for (let book of books){
             listBooksDiv.innerHTML += `
-            <li>${book.title}, ${book.author}</li>
-            `
-        })
-    
+            <li>${book.title}, ${book.author}</li>`
+        }
+    })
+        // debugger
 }
+
+
+
 
 function clearPage() {
     let show = document.querySelector('#list')
@@ -109,13 +115,37 @@ function createStudent() {
     
     .then(resp => resp.json())
     .then(student => {
-        document.getElementById('list').innerHTML += `
-        <li><a href="#" data-id="${student.id}">${student.first_name} ${student.last_name}</a></li>
-        `
+        document.getElementById('list').innerHTML += `<li id="userLi-${student.id}">
+        ${student.first_name} ${student.last_name} 
+       <button class="show-books" data-id=${student.id} onclick="displayBooks()">Show Books</button><button data-id=${student.id} onclick="deleteUser()">Delete</button>
+       </li>`
+
         clickListeners()
         document.querySelector('form').reset()
         clearForm()
         
     })
+
+    // function deleteUser() {
+    //     let id = event.target.dataset.id
+    //     debugger
+    //     fetch(`${usersBaseTwo}/${id}`, {
+    //         method: 'DELETE' 
+    //     })
+
+
+    // }
 }
 
+// // delete users
+// function deleteUser() {
+//     let userID = parseInt(event.target.dataset.id)
+//     fetch(`${BASE_URL}/users/${userID}`, {
+//         method: 'DELETE'
+//     })
+//     event.target.previousElementSibling.remove()
+//     event.target.remove()
+//     alert("You are now deleted from the database")
+//     hudUser.innerText = "Create A User"
+
+// }

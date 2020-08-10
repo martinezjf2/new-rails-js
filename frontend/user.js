@@ -31,19 +31,27 @@ class User {
                 const newUser = new User(user.id, user.first_name, user.last_name);
                 // console.log(newUser)
                 list.innerHTML += newUser.render();
+                
                 // console.log(list.innerHTML)
             });
         })
+        
 
     }
     
     render() {
         return `
         <li id="userLi-${this.id}">
-          <a href="#" data-id="${this.id}">${this.first_name} ${this.last_name}</a>
+         ${this.first_name} ${this.last_name} 
+        <button class="show-books" data-id=${this.id} onclick="displayBooks()">Show Books</button>
+        <button class="delete-user" data-id=${this.id} onclick="deleteUser()">Delete</button>
         </li>
+
+
         `
+
     }
+
 
    
 
