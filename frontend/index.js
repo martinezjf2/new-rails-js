@@ -1,4 +1,4 @@
-// const booksBase = 'http://localhost:3000/books/'
+const booksBaseTwo = 'http://localhost:3000/books/'
 const usersBaseTwo = 'http://localhost:3000/users/'
 
 
@@ -32,8 +32,28 @@ function clickListeners() {
 }
 
 function displayBooks() {
+    let id = event.target.dataset.id;
+    // console.log("ive been clicked")
+    clearPage()
+    let listBooksDiv = document.getElementById('bookList');
+    fetch(booksBaseTwo + id)
+    // console.log(booksBaseTwo + id)
+    .then(resp => resp.json())
+    // console.log(id)
+    .then(book => {
+            listBooksDiv.innerHTML += `
+            <li>${book.title}, ${book.author}</li>
+            `
+        })
     
 }
+
+function clearPage() {
+    let show = document.querySelector('#list')
+    show.innerHTML = ""
+    const ul = document.querySelector('#list2')
+    ul.innerHTML = ""
+  }
 
 function displayStudents() {
 
