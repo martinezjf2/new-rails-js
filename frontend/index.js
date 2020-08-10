@@ -53,10 +53,14 @@ function clearPage() {
     show.innerHTML = ""
     const ul = document.querySelector('#list2')
     ul.innerHTML = ""
+    let bookLi = document.querySelector('#bookList')
+    bookLi.innerHTML = ""
+    // document.querySelector('#form').innerHTML = ""
   }
 
 function displayStudents() {
-
+clearPage()
+User.getUsers()
 }
 
 
