@@ -30,7 +30,12 @@ function clickListeners() {
     // document.getElementById('list').addEventListener("click", displayBooks);
     document.getElementById('allStudents').addEventListener("click", displayStudents);
     document.getElementById('newStudents').addEventListener("click", displayStudentForm);
+    
 }
+
+
+
+
 
 function displayBooks() {
     let id = event.target.dataset.id;
@@ -64,17 +69,27 @@ function clearPage() {
     // document.querySelector('#form').innerHTML = ""
   }
 
+
+
+
 function displayStudents() {
 clearPage()
 User.getUsers()
 clearForm()
 
 }
+
+
+
+
  function clearForm() {
     let studentFormDiv = document.getElementById('studentForm')
     studentFormDiv.innerHTML = ""
   }
  
+
+
+
 
 
 function displayStudentForm() {
@@ -117,7 +132,7 @@ function createStudent() {
     .then(student => {
         document.getElementById('list').innerHTML += `<li id="userLi-${student.id}">
         ${student.first_name} ${student.last_name} 
-       <button class="show-books" data-id=${student.id} onclick="displayBooks()">Show Books</button><button data-id=${student.id} onclick="deleteUser()">Delete</button>
+       <button class="show-books" data-id=${student.id} onclick="displayBooks()">Show Books</button><button id="delete" data-id=${student.id} onclick="deleteUser()">Delete</button>
        </li>`
 
         clickListeners()
@@ -125,16 +140,18 @@ function createStudent() {
         clearForm()
         
     })
+    
+}
 
-    // function deleteUser() {
-    //     let id = event.target.dataset.id
-    //     debugger
-    //     fetch(`${usersBaseTwo}/${id}`, {
-    //         method: 'DELETE' 
-    //     })
-
-
-    // }
+function deleteUser() {
+    event.preventDefault();
+    let id = event.target.dataset.id
+    fetch(`${usersBaseTwo}/${id}`, {
+        method: 'DELETE' 
+    })
+    // debugger;
+    event.target.parentElement.remove()
+    // this.location.reload()
 }
 
 // // delete users
