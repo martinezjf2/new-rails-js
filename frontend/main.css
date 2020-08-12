@@ -1,0 +1,81 @@
+h1 {
+    color: blue;
+}
+
+body {
+    font-family: cursive;
+ /* put a background url */
+}
+
+/* .page {
+    border: 1px solid #665544;
+    background-color: #efefef;
+    padding: inherit;
+} */
+
+a:link {
+    color: deeppink;
+    text-decoration: : none;
+}
+
+a:visited {
+    color:blue;
+}
+
+a:hover {
+    color: deeppink;
+    text-decoration: underline;
+}
+
+a:active {
+    color: darkcyan;
+}
+
+input {
+    padding: 6px 12px 6px 12px;
+    border: 1px solid #665544;
+    color: black;
+}
+
+/* button.submit:hover {
+    background-color: #665544;
+}
+button.submit:active {
+    background-color: chocolate;
+
+} */
+/* input.text {
+    color: black;
+} */
+
+input.text:focus {
+    color: #665544;
+}
+
+ul {
+    columns: 2;
+    list-style: none;
+}
+
+.bookList {
+    list-style: inside circle;
+    /* width: 300px; */
+}
+
+/* Fieldset of when adding a new user */
+fieldset {
+    width: 350px;
+    border: 2px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+legend {
+    background-color: #efefef;
+    border: 2px solid #dcdcdc;
+    border-radius: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
