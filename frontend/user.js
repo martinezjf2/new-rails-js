@@ -12,7 +12,12 @@ class User {
     static async getUsers() {
         const list = document.querySelector('#list')
         const response = await fetch(usersBase)
-        const users = await response.json()
+        // if (response.ok){
+            const users = await response.json()
+        //     console.log("Successful")
+        // } else {
+        //     console.log("Unsuccessful")
+        // };
         users.forEach (user => {
             const newUser = new User(user.id, user.first_name, user.last_name);
             list.innerHTML += newUser.render();
@@ -23,7 +28,17 @@ class User {
     // static getUsers() {
     // const list = document.querySelector('#list')
     // fetch(usersBase)
-    // .then(rsp => rsp.json())
+    // .then(resp => resp.json())
+    // // .then(rsp => {
+    // //     if (rsp.ok) {
+    // //         rsp.json()
+    // //         console.log("SUCCESSFUL")
+    // //     } else {
+    // //         console.log("NOT SUCCESSFUL")
+    // //     };
+    // // }
+    // // )
+    //     // Fix the syntax on previous line which is not making me go through thesecond promise
     //     .then(users => {
     //         // console.log(users)
     //         users.forEach(user => {
@@ -41,11 +56,15 @@ class User {
     
     render() {
         return `
+        <center>
         <li id="userLi-${this.id}">
-         ${this.first_name} ${this.last_name} 
+         ${this.first_name} ${this.last_name} <br><br>
         <button class="show-books" data-id=${this.id} onclick="displayBooks()">Show Books</button>
         <button id="delete" data-id=${this.id} onclick="deleteUser()">Delete</button>
         </li>
+        </center>
+        <br>
+
         `
 
     }

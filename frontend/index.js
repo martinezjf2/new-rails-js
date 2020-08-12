@@ -50,7 +50,7 @@ function displayBooks() {
     .then(books =>{
         for (let book of books){
             listBooksDiv.innerHTML += `
-            <li>${book.title}, ${book.author}</li>`
+            <li class="bookList">${book.title}, ${book.author}</li>`
         }
     })
         // debugger
@@ -95,13 +95,25 @@ clearForm()
 function displayStudentForm() {
 // debugger;
     let studentFormDiv = document.getElementById('studentForm');
-    let form = `<form>
-                <label>First Name:</label>
-                <input type="text" id="first_name">
-                <label>Last Name</label>
-                <input type="text" id="last_name">
+    let form = `<br>
+    <center>
+            <fieldset>
+            <legend>New Student?</legend>
+                <form>
+                <label>First Name: </label>
+                <input type="text" id="first_name" required>
+                <br>
+                <br>
+                <label>Last Name: </label>
+                <input type="text" id="last_name" required> 
+                <br>
+                <br>
                 <input type="submit"><br>
                 </form>
+                
+                </fieldset>
+                </center>
+                <br>
                 `
                 // debugger;
     studentFormDiv.innerHTML = form;
