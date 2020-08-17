@@ -13,6 +13,7 @@ things i dont understand as much, and have to study more about
 - how does hoisting work
 - closures on javascripts
 - JSON.stringify() within the body of a fetch request
+- hoisting
 
 
 
@@ -20,12 +21,11 @@ Improve
 
 - when submitting a new student, input has to be in, have to inquire validations?
 
-- playing around with the syntax in my first fetch request in user.js
 
 Add-ons
 
-- Form to add books
-- fetch request to delete books
+
+
 - when i add a new student how do i get the same css on the element, also, if the number of users is an odd number, the culumns are not perfectly inline.
 
 - when im adding a new studnet within the showing the books, i only want display form if im on the student home page

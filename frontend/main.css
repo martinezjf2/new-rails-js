@@ -53,7 +53,7 @@ input.text:focus {
 }
 
 ul {
-    columns: 2;
+    column-count: 2;
     list-style: none;
 }
 
@@ -79,3 +79,10 @@ legend {
     text-transform: uppercase;
 }
 
+
+li {
+    border: 5px solid #ee3e80;
+    padding: 20px;
+    width: 275px;
+    border-radius: 10px;
+}

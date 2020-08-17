@@ -1,49 +1,16 @@
 // const booksBase = 'http://localhost:3000/books/'
 
 
-// class Book {
-//     static books = []
-//     constructor(id, title, author){
-//         this.title = title
-//         this.author = author
-//         this.id = id
-        
-//     }
-//     static getBooks() {
-//         const list = document.querySelector('#list2')
-//         fetch(booksBase)
-//         .then(resp => resp.json())
-//         .then(books => {
-//             // console.log(books)
-//             books.forEach(book => {
-//                 // console.log(book)
-//                 const newBook = new Book(book.id, book.title, book.author)
-//                 // console.log(newBook)
-//                 list.innerHTML += newBook.renderBook();
-//                 // show books that are associate with the user when the user is clicked
-//             })
-//         })
-//         // console.log(resp)
+// need to make a form for adding a new book, also want to make sure that the book renders on the page after it has been submitted,
+
+// Also, i on ly want to show the NEW STUDENT LINK when it is in the all students homepage
 
 
-//     }
-
-//     renderBook() {
-//         if (this.user_id === User.id) {
-//         return `
-//         <li id="bookLi-${this.id}">
-//           ${this.title}, ${this.author}
-//         </li>
-//         `
-//         }
-//     }
-        
-    
-
+// class Dook {
+//      static books = []
+//      constructor(id, title, author) {
+//           this.id = id
+//           this.title = title
+//           this.author = author
+//      }
 // }
-
-
-
-/* <li id="userLi-48">
-     <a href="#" data-id="48">Maisie Hermann</a>
-</li> */

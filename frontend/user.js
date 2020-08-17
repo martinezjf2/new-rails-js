@@ -10,14 +10,19 @@ class User {
     }
 
     static async getUsers() {
+    reappearNewStudentLink();
+
         const list = document.querySelector('#list')
+        let users
+        
         const response = await fetch(usersBase)
-        // if (response.ok){
-            const users = await response.json()
-        //     console.log("Successful")
-        // } else {
-        //     console.log("Unsuccessful")
-        // };
+        if (response.ok){
+            users = await response.json()
+            console.log("Successful")
+        } else {
+            console.log("Unsuccessful")
+        };
+        console.log(users)
         users.forEach (user => {
             const newUser = new User(user.id, user.first_name, user.last_name);
             list.innerHTML += newUser.render();

@@ -20,6 +20,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
+      # @book.user_id = User.id
       render json: @book, status: :created, location: @book
     else
       render json: @book.errors, status: :unprocessable_entity

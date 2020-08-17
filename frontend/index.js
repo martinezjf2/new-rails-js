@@ -30,16 +30,91 @@ function clickListeners() {
     // document.getElementById('list').addEventListener("click", displayBooks);
     document.getElementById('allStudents').addEventListener("click", displayStudents);
     document.getElementById('newStudents').addEventListener("click", displayStudentForm);
+    document.getElementById('newBook').addEventListener("click", displayBookForm);
     
+}
+// Only show if it is within the student "show books"
+function displayBookForm() {
+    let bookFormDiv = document.getElementById('bookForm');
+    let form = `<br>
+    <center>
+            <fieldset>
+            <legend>New Book?</legend>
+                <form>
+                <label>Title: </label>
+                <input type="text" id="title" required>
+                <br>
+                <br>
+                <label>Author: </label>
+                <input type="text" id="author" required> 
+                <br>
+                <br>
+                <input type="submit"><br>
+                </form>
+                
+                </fieldset>
+                </center>
+                <br>
+                `
+                // debugger;
+    bookFormDiv.innerHTML = form;
+    document.querySelector('form').addEventListener("submit", createBook);
+}
+
+    function createBook() {
+        event.preventDefault();
+        // const book = {
+        //     title: document.getElementById('title').value,
+        //     author: document.getElementById('author').value
+        // }
+    
+        // fetch(`${usersBase}/${book.user_id}/books`,  {
+        //     method: "POST",
+        //     body: JSON.stringify(book),
+        //     headers: {
+        //         'Content-Type' : 'application/json',
+        //         'Accept' : 'application/json'
+        //     }
+        // })
+        
+        // .then(resp => console.log(resp))
+        // .then(book => {
+        //     document.getElementById('bookList').innerHTML += `
+        //     <br>
+        //     <center>
+        //     <li id="bookList">
+        //     ${book.title} ${book.author} <br>
+        //    </li>
+        //    </center>
+        //    `
+    
+        //     clickListeners()
+        //     document.getElementById('bookForm').reset()
+        //     clearForm()
+            
+        // })
+    }
+
+
+function hideNewStudentslink() {
+    document.getElementById('newStudents').style.visibility = 'hidden';
+    // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_toggle_hide_show
+    
+}
+
+function reappearNewStudentLink() {
+    document.getElementById('newStudents').style.visibility = 'visible';
+
 }
 
 
 
-
-
 function displayBooks() {
+    clearPage();
+    
     let id = event.target.dataset.id;
     let listBooksDiv = document.getElementById('bookList'); 
+    hideNewStudentslink();
     // console.log("ive been clicked")
     clearPage()
     fetch(`${usersBase}/${id}/books`)
@@ -47,10 +122,15 @@ function displayBooks() {
     // console.log(booksBaseTwo + id)
     .then(resp => resp.json())
     // console.log(id)
+
     .then(books =>{
+        // let studentFormLink = document.getElementById('newStudents')
+        // studentFormLink.className = "hidden";
         for (let book of books){
-            listBooksDiv.innerHTML += `
-            <li class="bookList">${book.title}, ${book.author}</li>`
+            listBooksDiv.innerHTML += `<center>
+            <li class="bookList">${book.title}, ${book.author}</li>
+            </center>
+            <br>`
         }
     })
         // debugger
@@ -66,7 +146,8 @@ function clearPage() {
     ul.innerHTML = ""
     let bookLi = document.querySelector('#bookList')
     bookLi.innerHTML = ""
-    // document.querySelector('#form').innerHTML = ""
+    document.getElementById('bookForm').innerHTML = ""
+    document.getElementById('studentForm').innerHTML = ""
   }
 
 
@@ -142,10 +223,16 @@ function createStudent() {
     
     .then(resp => resp.json())
     .then(student => {
-        document.getElementById('list').innerHTML += `<li id="userLi-${student.id}">
-        ${student.first_name} ${student.last_name} 
-       <button class="show-books" data-id=${student.id} onclick="displayBooks()">Show Books</button><button id="delete" data-id=${student.id} onclick="deleteUser()">Delete</button>
-       </li>`
+        document.getElementById('list').innerHTML += `
+        <br>
+        <center>
+        <li id="userLi-${student.id}">
+        ${student.first_name} ${student.last_name} <br>
+       <button class="show-books" data-id=${student.id} onclick="displayBooks()">Show Books</button>
+       <button id="delete" data-id=${student.id} onclick="deleteUser()">Delete</button>
+       </li>
+       </center>
+       `
 
         clickListeners()
         document.querySelector('form').reset()
@@ -165,16 +252,3 @@ function deleteUser() {
     event.target.parentElement.remove()
     // this.location.reload()
 }
-
-// // delete users
-// function deleteUser() {
-//     let userID = parseInt(event.target.dataset.id)
-//     fetch(`${BASE_URL}/users/${userID}`, {
-//         method: 'DELETE'
-//     })
-//     event.target.previousElementSibling.remove()
-//     event.target.remove()
-//     alert("You are now deleted from the database")
-//     hudUser.innerText = "Create A User"
-
-// }
