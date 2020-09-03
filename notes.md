@@ -29,4 +29,4 @@ Add-ons
 - when i add a new student how do i get the same css on the element, also, if the number of users is an odd number, the culumns are not perfectly inline.
 
 - when im adding a new studnet within the showing the books, i only want display form if im on the student home page
-
+- use alerts when deleting anything to confirm

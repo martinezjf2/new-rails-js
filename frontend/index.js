@@ -121,6 +121,7 @@ function displayBooks() {
     
     // console.log(booksBaseTwo + id)
     .then(resp => resp.json())
+    // resolved means server is done with the server
     // console.log(id)
 
     .then(books =>{

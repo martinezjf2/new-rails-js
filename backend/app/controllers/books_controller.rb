@@ -6,6 +6,7 @@ class BooksController < ApplicationController
     @user = User.find(params[:user_id])
     @book = @user.books
     render json: @book, only: [:title, :author, :user_id]
+    # serialization, clean ams(active model serializer)
   end
 
   # GET /books/1
