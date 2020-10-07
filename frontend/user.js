@@ -14,11 +14,12 @@ class User {
 
     static async getUsers() {
     reappearNewStudentLink();
+    hideNewBookLink();
         const list = document.querySelector('#list')
-        let users 
+        let users
         const response = await fetch(usersBase)
         if (response.ok){
-            users = await response.json()
+           users = await response.json()
 
             console.log("Successful")
         } else {

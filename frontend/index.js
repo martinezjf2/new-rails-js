@@ -63,21 +63,30 @@ function displayBookForm() {
 
     function createBook() {
         event.preventDefault();
-        // const book = {
-        //     title: document.getElementById('title').value,
-        //     author: document.getElementById('author').value
-        // }
+        console.log("I was pressed")
+        let user_id 
+        const book = {
+            user_id: this.user_id,
+            title: document.getElementById('title').value,
+            author: document.getElementById('author').value
+        }
+        console.log(title.value, author.value)
+        console.log(book.user_id)
+
     
-        // fetch(`${usersBase}/${book.user_id}/books`,  {
-        //     method: "POST",
-        //     body: JSON.stringify(book),
-        //     headers: {
-        //         'Content-Type' : 'application/json',
-        //         'Accept' : 'application/json'
-        //     }
-        // })
+        fetch(`${usersBase}/${User.user_id}/books`,  {
+            method: "POST",
+            headers: {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json'
+            },
+
+            body: JSON.stringify(book)
+        })
         
-        // .then(resp => console.log(resp))
+        .then(resp => console.log(resp))
+// fix the url fetch , user_id is undefined
+
         // .then(book => {
         //     document.getElementById('bookList').innerHTML += `
         //     <br>
@@ -97,20 +106,27 @@ function displayBookForm() {
 
 
 function hideNewStudentslink() {
-    document.getElementById('newStudents').style.visibility = 'hidden';
+    document.getElementById('newStudents').style.display = 'none';
     // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_toggle_hide_show
     
 }
 
 function reappearNewStudentLink() {
-    document.getElementById('newStudents').style.visibility = 'visible';
+    document.getElementById('newStudents').style.display = 'inline-block';
 
 }
 
+function hideNewBookLink() {
+    document.getElementById('newBook').style.display = 'none';
+}
 
+function showNewBookLink() {
+    document.getElementById('newBook').style.display = 'inline-block';
+}
 
 function displayBooks() {
     clearPage();
+    showNewBookLink();
     
     let id = event.target.dataset.id;
     let listBooksDiv = document.getElementById('bookList'); 
